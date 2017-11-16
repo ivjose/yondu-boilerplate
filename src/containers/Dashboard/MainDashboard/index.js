@@ -29,7 +29,7 @@ class MainDashboard extends Component {
 
         return (
             <div>
-                MainDashboard
+                MainDashboard Test
                    <h1>
                     {results.map(person)}
                 </h1>
