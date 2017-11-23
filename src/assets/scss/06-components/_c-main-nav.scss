@@ -1,0 +1,10 @@
+.c-main-nav {
+    ul {
+        > li {
+            > a {
+                text-transform: uppercase;
+                color: $white;
+            }
+        }
+    }
+}

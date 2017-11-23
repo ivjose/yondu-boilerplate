@@ -1,0 +1,77 @@
+.c-breadcrumbs {
+    padding: 10px 0 5px;
+    margin: 0;
+    &__item {
+        // background: red;
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 20px;
+        color: $gray-light;
+        font-size: 12px;
+        &:before {
+            content: "\f105";
+            font-family: FontAwesome;
+            font-size: 15px;
+            right: 0;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            margin-top: -2px;
+            margin-right: -13px;
+            color: $gray-light;
+        }
+       
+        &:first-child {
+            // background: red;
+            margin-right: 15px;
+            font-size: 0;
+            line-height: 0;
+            
+            &:after {
+                content: "\f015";
+                font-family: FontAwesome;
+                font-size: 18px;
+                left: 0;
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                margin-top: 8px;
+                color: $gray-base;
+            }
+            &:before {
+                content: "\f105";
+                font-family: FontAwesome;
+                font-size: 15px;
+                color: $gray-light;
+                right: 0;
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                margin-top: 9px;
+                margin-right: -10px;
+             
+            }
+            > a {
+                position: relative;
+                z-index: 2;
+                height: 20px;
+                width: 20px;
+                display: block;
+                // background: red;
+                
+            }
+        }
+        &:last-child {
+            &:before {
+                content: "";
+            }
+        
+        }
+        > a {
+            color: $gray-base;
+        }
+    }
+}
+
+

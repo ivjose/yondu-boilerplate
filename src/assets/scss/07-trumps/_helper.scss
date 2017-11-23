@@ -1,0 +1,103 @@
+
+.h-pad {
+    &--none {
+        padding: 0!important;
+    }
+    &__left {
+        &--60 {
+            padding-left: 60px!important;
+        }
+    }
+}
+
+.h-height {
+    &--100 {
+        height: 100%;
+    }
+}
+
+.h-relative {
+    position: relative;
+}
+
+.margin {
+    &__top {
+        &--15 {
+            margin-top: 15px;
+        }
+        &--20 {
+            margin-top: 20px;
+        }
+        &--30 {
+            margin-top: 30px;
+        }
+    }
+    &__right{
+        &--10 {
+            margin-right: 10px;
+        }
+    }
+    &__left{
+        &--5 {
+            margin-left: 5px;
+        }
+    }
+    
+    &__btm {
+        &--15 {
+            margin-bottom: 15px;
+        }
+        &--30 {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+
+.xs-btn-padding {
+    padding: 1px 18px
+}
+
+.btn-space {
+    &--5 {
+        margin: 0 5px;
+    }
+}
+
+.h-pagination-wrap {
+    >.pagination {
+        margin-top: 0;
+    }
+}
+
+.h-table {
+    &--center {
+        > thead > tr > th {
+            text-align: center;
+            &.h-table--left {
+                text-align: left;
+            }
+        }
+        > tbody > tr > td {
+            text-align: center;
+            &.h-table--left {
+                text-align: left;
+            }
+        }
+    }
+
+}
+
+.h-block {
+    display: block;
+}
+
+.modal-container {
+    position: relative;
+    .modal,
+    .modal-backdrop {
+        position: absolute;
+        z-index: 1050;
+    } 
+
+}

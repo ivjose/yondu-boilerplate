@@ -1,0 +1,110 @@
+.nav-sidebar {
+    &__icon {
+        margin-right: 6px;
+   
+    }
+    &__toggle-icon {
+        float: right;
+        margin-top: 4px;
+        font-size: 10px;
+        margin-right: -2px;
+        font-size: 12px;
+        fill: darken($gray-base, 15);
+    }
+    &__top {
+        display: table;
+    }
+    &__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        &--child {
+            background-color: #1a1e21!important;
+        }
+        &--sub-nav {
+            display: none;
+            transition: height .4s ease;
+        }
+        .nav-sidebar__list {
+            background-color: darken($gray-base, 4.0);
+        }
+    }
+    &__title {
+        display: table-cell;
+        width: 100%;
+        padding: 18px 15px;
+        vertical-align: middle;
+        h1 {
+            color: $white;
+            font-size: 1.5em;
+            margin: 0;
+        }
+    }
+    &__toggle-wrap {
+        display: table-cell;
+    }
+    &__toggle-btn {
+        padding: 14px 15px;
+        background: none;
+        border: 0;
+        color: $white;
+        outline: 0;
+        &:hover {
+            color: darken(#fff, 15);
+        }
+        svg {
+            font-size: 2em;
+        }
+    }
+    &__item {
+        display: block;
+        padding: 12px 15px 12px 13px;
+        text-decoration: none;
+        cursor: pointer;
+        border-bottom: 1px solid #404142;
+        color: $gray-light;
+        font-size: 13px;
+        &:hover,
+        &:focus {
+            background-color: lighten( #333, 5% );
+            text-decoration: none;
+            color: $brand-primary;
+        }
+        &.active {
+            background-color: darken($gray-base, 2.0);
+        }
+        &.active {
+            &.is-open~.nav-sidebar__list--sub-nav {
+                // height: 300px;
+                // background-color: blue!important;
+                // transition: all .15s;
+            }
+        }
+        &.is-open {
+            background-color: darken($gray-base, 2.0);
+            .nav-sidebar__icon--minus {
+                margin-right: -3px;
+            }
+        }
+        &.is-open~.nav-sidebar__list--sub-nav {
+            display: inherit;
+            background-color: darken($gray-base, 3.0);
+            transition: all .15s;
+            >li>a {
+                padding-left: 50px;
+                padding: 7px 15px 7px 45px;
+                border-bottom: none;
+                
+                &.active {
+                    background-color: darken($gray-base, 5.0);
+                }
+                &:hover,
+                &:focus {
+                    background-color: darken($gray-base, 6.0);
+                    text-decoration: none;
+                }
+                
+            }
+        }
+    }
+}
