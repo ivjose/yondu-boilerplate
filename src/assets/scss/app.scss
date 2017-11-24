@@ -5,6 +5,8 @@
 01-Settings – used with preprocessors and contain font, colors definitions, etc.
 */
 @import './01-settings/fonts';
+@import './01-settings/functions';
+
 @import './01-settings/variables';
 
 
@@ -21,8 +23,8 @@
 /* 
 04-Elements – styling for bare HTML elements (like H1, A, etc.). 
 */
-// @import './04-elements/html';
-// @import './04-elements/body';
+@import './04-elements/html';
+@import './04-elements/body';
 
 /* 
 05-Objects – class-based selectors which define undecorated design patterns,
@@ -40,7 +42,7 @@
 07-Trumps – utilities and helper classes with ability to override
 */
 // @import './07-trumps/helper';
-// @import './07-trumps/override';
+@import './07-trumps/override';
 
 //Custom Component
 
