@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import createHistory from 'history/createBrowserHistory'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 
@@ -12,7 +11,7 @@ import store from './store/mainStore'
 
 // import './index.css';
 import App from './App';
-
+import history from './store/mainHistory';
 
 import registerServiceWorker from './registerServiceWorker';
 
