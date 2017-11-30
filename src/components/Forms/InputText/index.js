@@ -15,7 +15,7 @@ const propTypes = {
   }),
   meta: PropTypes.shape({
     touched: PropTypes.bool,
-    error: PropTypes.string
+    error: PropTypes.array
   }),
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
@@ -26,7 +26,10 @@ const defaultProps = {
   label: '',
   type: 'text',
   placeholder: '',
-  readOnly: false
+  readOnly: false,
+  meta:{
+    error: []
+  },
 };
 
 function InputText({

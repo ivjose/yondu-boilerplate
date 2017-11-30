@@ -8,7 +8,7 @@ import Page404 from "../../components/Page404"
 
 
 
-const AsyncLogin = asyncComponent(() => import("../Login/LoginAuth"));
+const AsyncLogin = asyncComponent(() => import("../Login"));
 const AsyncDashboard = asyncComponent(() => import("../Dashboard/RootDasboard"));
 
 class GlobalErrorSwitch extends Component {
@@ -33,7 +33,7 @@ class GlobalErrorSwitch extends Component {
         console.log(this.props);
 
         return (
-            <div style={{height: 100}}>
+            <div style={{height: '100%', background: "#eee"}}>
                 {
                     isError
                         ? <Route component={Page404} />

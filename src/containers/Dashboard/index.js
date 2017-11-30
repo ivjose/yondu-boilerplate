@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
-
 import { Switch, Route, Redirect, Link } from 'react-router-dom';
+import asyncComponent from '../../AsyncComponent';
+
+import AuthenticatedRoute from '../AuthenticatedRoute';
+import DashboardLayout from '../../components/Layout/DashboardLayout'
+const AsyncMainDashboard = asyncComponent(() => import('./MainDashboard'));
+const AsyncUserProfile = asyncComponent(() => import('./UserProfile'));
+
+
 
 class Dashboard extends Component {
     render() {
         return (
             <div>
             <h2>Dashboard</h2>
-            <p><Link to="/admin">Root</Link></p>
-            <p><Link to="/admin/user">User</Link></p>
-            <p><Link to="/admin/user/asdasd">UserTest</Link></p>
-            <p><Link to="/">Frontend</Link></p>
-            <p><Link to="/admin/the-route-is-swiggity-swoute">Swiggity swooty</Link></p>
+            <p><Link to="/login">Login</Link></p>
+            <p><Link to="/dashboard">Dashboard</Link></p>
+            <p><Link to='/app/test' >Test Route</Link></p>
+            <p><Link to="/user-profile">User Profile </Link></p>
+            <p><Link to="/the-route-is-swiggity-swoute">Swiggity swooty</Link></p>
             <Switch>
-                <Route exact path='/Dashboard' component={Home} />
-                <Route exact path='/UserProfile' component={About} />
+                <AuthenticatedRoute exact path='/dashboard' component={AsyncMainDashboard} />
+                <AuthenticatedRoute exact path='/app/:userId' component={AsyncMainDashboard} />
+                <AuthenticatedRoute exact path='/user-profile' component={AsyncUserProfile} />
+                <AuthenticatedRoute exact path='/dashboard/user-profile' component={AsyncUserProfile} />
                 <Redirect to={{
                     state: { error: true }
                 }} />

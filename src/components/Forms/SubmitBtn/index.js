@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const SubmitBtn = props => {
   const { text, size, block, type, action, style } = props;
-  console.log(this, "TEST");
+  // console.log(this, "TEST");
   return (
     <Button
       {...props}
