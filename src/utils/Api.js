@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-axios.defaults.baseURL = 'https://randomuser.me/api/';
+axios.defaults.baseURL = 'http://192.168.0.13:81/api/';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
@@ -38,6 +38,30 @@ const token = ""
 //     static Delete() {
 //         return 'Static method has been called';
 //     }
+// }
+
+// export function postData(url, values) {
+//     return axios.post(url, values, {
+//         headers: {'X-Auth-Token': token ? token : null },        
+//     })
+// }
+
+
+
+export async function postData(url, values) {
+    return axios.post(url, values, {
+        headers: {'X-Auth-Token': token ? token : null },        
+    }) 
+}
+
+
+
+// export const postData = async (url, values) => {
+// alert("API CALL")
+
+//     return axios.post(url, values, {
+//         headers: {'X-Auth-Token': token ? token : null },        
+//     })
 // }
 
 

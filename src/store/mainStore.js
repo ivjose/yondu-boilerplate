@@ -9,7 +9,7 @@ import logger from 'redux-logger'
 import history from './mainHistory';
 
 // import {ActionSaga} from '../actionSaga';
-import mySaga from "../sagas";
+import rootSaga from "../sagas";
 
 import reducers from '../reducers' // Or wherever you keep your reducers
 
@@ -41,6 +41,6 @@ const store = createStore(
     reducers,
     enhancers
 )
-sagaMiddleware.run(mySaga)
+sagaMiddleware.run(rootSaga)
 
 export default store;

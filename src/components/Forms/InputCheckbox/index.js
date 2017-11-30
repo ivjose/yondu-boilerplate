@@ -40,7 +40,7 @@ function InputCheckbox({
   placeholder,
   meta: { touched, error }
 }) {
-  console.log(input,"Cjeck");
+
   return (
     <FormGroup check>
       {label && <Label for={input.name} className="d-block">{label}</Label>}
