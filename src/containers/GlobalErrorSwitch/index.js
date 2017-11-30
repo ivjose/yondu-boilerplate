@@ -33,7 +33,7 @@ class GlobalErrorSwitch extends Component {
         console.log(this.props);
 
         return (
-            <div>
+            <div style={{height: 100}}>
                 {
                     isError
                         ? <Route component={Page404} />

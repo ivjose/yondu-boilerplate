@@ -17,8 +17,6 @@ import registerServiceWorker from './registerServiceWorker';
 
 
 
-const history = createHistory()
-
 
 
 ReactDOM.render(
