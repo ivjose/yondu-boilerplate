@@ -11,7 +11,7 @@ class ChangePassword extends Component {
     handleFormSubmit = values => {
         const { submitFormAction } = this.props;
         // console.log(values, "TEST");
-        return submitFormAction("/auth/change-password", values, "ChangePasswordFieldsForm");
+        return submitFormAction("auth/change-password", values, "ChangePasswordFieldsForm");
       };
 
 

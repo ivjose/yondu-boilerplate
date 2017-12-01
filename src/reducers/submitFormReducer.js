@@ -30,13 +30,13 @@ const submitFormReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         status: "error",
-        data: payload.data
+        data: payload.message
       };
     case SUBMIT_FORM_ERROR:
       return {
         ...state,
         status: "error",
-        message: payload.message
+        message: payload 
       };
     default:
       return state;

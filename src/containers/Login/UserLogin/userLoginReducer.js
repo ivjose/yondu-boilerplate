@@ -37,7 +37,7 @@ const userLoginReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         status: "error",
-        message: payload.message
+        message: payload
       };
     default:
       return state;

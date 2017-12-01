@@ -11,7 +11,7 @@ class ForgetPassword extends Component {
     handleFormSubmit = values => {
         const { submitFormAction } = this.props;
         // console.log(values, "TEST");
-        return submitFormAction("/auth/forgot-password", values, "ForgetPasswordFieldsForm");
+        return submitFormAction("auth/forgot-password", values, "ForgetPasswordFieldsForm");
       };
 
 
@@ -28,10 +28,13 @@ class ForgetPassword extends Component {
        
               
                 <ForgetPasswordFields handleFormSubmit={this.handleFormSubmit} />
-                {submitResponse.status === "error" &&
-                submitResponse.message && (
-                  <Alert color="danger" style={{marginTop: 20}}>{submitResponse.message}</Alert>
-                )}
+                {
+                    submitResponse.status === "success" &&  submitResponse.message ? <Alert color="success" style={{marginTop: 20}}>{submitResponse.message}</Alert> : submitResponse.status === "error" &&  submitResponse.message && <Alert color="danger" style={{marginTop: 20}}>{submitResponse.message}</Alert> 
+                }
+
+     
+
+            
                 <p><Link to="/login"> Go To login </Link></p>
             </div>
         );

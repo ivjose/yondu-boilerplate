@@ -77,9 +77,21 @@ function* loginFlow({ url, values, formName }) {
       yield put(stopSubmit(formName, errorData));
     } else {
       if (error.response && error.response.data) {
-        yield put({ type: USER_LOGIN_ERROR, payload: error.response.data });
+        console.log("my ERROR!!",error.response);
+        yield put({ type: USER_LOGIN_ERROR, payload: error.response.data.message });
       } else {
-        yield put({ type: USER_LOGIN_ERROR, payload: error });
+
+
+        let errorMessage = ""
+        if (error.response && error.response.data) {
+          errorMessage = error.response.data.message
+        } else {
+          errorMessage = error.message
+        }
+
+        yield put({ type: USER_LOGIN_ERROR, payload: errorMessage})
+
+ 
       }
     }
   } finally {

@@ -41,7 +41,7 @@ function* submitForm ({url, values, formName }) {
       console.log("MALI!!",error, formName);
 
 
-      if (error.response.status === 422) {
+      if (error.response && error.response.status === 422) {
         const errorData = []
         for (let prop in error.response.data.message) {
           if (error.response.data.message[prop]) {
@@ -56,14 +56,23 @@ function* submitForm ({url, values, formName }) {
         yield put(stopSubmit(formName ,errorData));
     
       } else {
-      
+       
 
-        if (error.response && error.response.data) {
-        
+        if (error.response && error.response.data && error.response.data.data) {
+
           yield put({ type: SUBMIT_FORM_ERROR, payload:  error.response.data })
         } else {
-          yield put({ type: SUBMIT_FORM_ERROR, payload: error })
+     
+          let errorMessage = ""
+          if (error.response && error.response.data) {
+            errorMessage = error.response.data.message
+          } else {
+            errorMessage = error.message
+          }
+ 
+          yield put({ type: SUBMIT_FORM_ERROR, payload: errorMessage})
         }
+    
        
       }
 

@@ -34,12 +34,12 @@ class UserLogin extends Component {
     return (
       <div>
         <LoginFields handleFormSubmit={this.handleFormSubmit} />
-        {userLoginStatus.status === "error" &&
-          userLoginStatus.message && (
-            <Alert color="danger" style={{ marginTop: 20 }}>
-              {userLoginStatus.message}
-            </Alert>
-          )}
+
+
+
+        {
+          userLoginStatus.status === "success" &&  userLoginStatus.message ? <Alert color="success" style={{marginTop: 20}}>{userLoginStatus.message}</Alert> : userLoginStatus.status === "error" &&  userLoginStatus.message && <Alert color="danger" style={{marginTop: 20}}>{userLoginStatus.message}</Alert> 
+        }
         <p>
           <Link to="/register">Register</Link>
         </p>
