@@ -8,6 +8,19 @@ import LoginFields from "./components/LoginFields";
 import { Alert } from "reactstrap";
 
 class UserLogin extends Component {
+
+
+
+    componentWillReceiveProps(newProps) {
+
+        const { userLoginStatus } = this.props;
+    
+        if(newProps.userLoginStatus.status === "success") {
+            console.log("success!!!",userLoginStatus);
+            // browserHistory.push('/application-maintenance');
+        }
+    }
+
   handleFormSubmit = values => {
     const { userLoginAction } = this.props;
     // console.log(values, "TEST");
