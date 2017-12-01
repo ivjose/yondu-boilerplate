@@ -56,7 +56,15 @@ function* submitForm ({url, values, formName }) {
         yield put(stopSubmit(formName ,errorData));
     
       } else {
-        yield put({ type: SUBMIT_FORM_ERROR, payload: error })
+      
+
+        if (error.response && error.response.data) {
+        
+          yield put({ type: SUBMIT_FORM_ERROR, payload:  error.response.data })
+        } else {
+          yield put({ type: SUBMIT_FORM_ERROR, payload: error })
+        }
+       
       }
 
 
@@ -72,7 +80,7 @@ function* submitForm ({url, values, formName }) {
 
 function* submitFormSaga () {
 
-    yield takeLatest('SUBMIT_FORM', submitForm)
+    yield takeLatest(SUBMIT_FORM, submitForm)
 
 }
 
