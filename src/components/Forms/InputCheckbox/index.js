@@ -13,11 +13,8 @@ const propTypes = {
     name: PropTypes.string.isRequired,
     value: PropTypes.bool
   }),
-  meta: PropTypes.shape({
-    touched: PropTypes.bool,
-    error: PropTypes.string
-  }),
-
+  error: PropTypes.string,
+  touched: PropTypes.bool,
   placeholder: PropTypes.string,
   readOnly: PropTypes.bool
 };

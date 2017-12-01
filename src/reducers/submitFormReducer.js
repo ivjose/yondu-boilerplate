@@ -1,39 +1,38 @@
 import {
-  USER_LOGIN,
-  USER_LOGIN_SUCCESS,
-  USER_LOGIN_FIELD_ERROR,
-  USER_LOGIN_ERROR,
-  
-} from "./constants";
+  SUBMIT_FORM,
+  SUBMIT_FORM_SUCCESS,
+  SUBMIT_FORM_FIELD_ERROR,
+  SUBMIT_FORM_ERROR
+} from "../constants/Types";
 
 const initialState = {
   data: {},
-  status: null,
-  message: ""
+  status: null
 };
 
-const userLoginReducer = (state = initialState, { type, payload }) => {
+const submitFormReducer = (state = initialState, { type, payload }) => {
   // console.log("my reducser",payload);
 
   switch (type) {
-    case USER_LOGIN:
+    case SUBMIT_FORM:
       return {
         status: "loading"
       };
-    case USER_LOGIN_SUCCESS:
+
+    case SUBMIT_FORM_SUCCESS:
       return {
         ...state,
         status: "success",
         message: "success",
         data: payload.data
       };
-    case USER_LOGIN_FIELD_ERROR:
+    case SUBMIT_FORM_FIELD_ERROR:
       return {
         ...state,
         status: "error",
         data: payload.data
       };
-      case USER_LOGIN_ERROR:
+    case SUBMIT_FORM_ERROR:
       return {
         ...state,
         status: "error",
@@ -44,4 +43,4 @@ const userLoginReducer = (state = initialState, { type, payload }) => {
   }
 };
 
-export default userLoginReducer;
+export default submitFormReducer;

@@ -13,13 +13,11 @@ const propTypes = {
     name: PropTypes.string.isRequired,
     value: PropTypes.string
   }),
-  meta: PropTypes.shape({
-    touched: PropTypes.bool,
-    error: PropTypes.array
-  }),
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  readOnly: PropTypes.bool
+  readOnly: PropTypes.bool,
+  error: PropTypes.string,
+  touched: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -27,9 +25,8 @@ const defaultProps = {
   type: 'text',
   placeholder: '',
   readOnly: false,
-  meta:{
-    error: []
-  },
+
+
 };
 
 function InputText({
@@ -41,6 +38,7 @@ function InputText({
   autoFocus,
   meta: { touched, error }
 }) {
+  console.log("INPUT TEXT!!", touched);
   return (
     <FormGroup >
       {label && <Label for={input.name}>{label}</Label>}

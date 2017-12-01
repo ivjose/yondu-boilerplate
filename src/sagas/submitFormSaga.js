@@ -1,36 +1,38 @@
 
-import { delay } from "redux-saga";
-import {
-  call,
-  takeLatest,
+import { delay } from 'redux-saga'
+import { 
+  call, 
+  takeLatest, 
   takeEvery,
-  put,
+  put ,
   take,
   fork,
   cancelled
 } from "redux-saga/effects";
-import { SubmissionError, stopSubmit } from "redux-form";
-import {
-  USER_LOGIN,
-  USER_LOGIN_SUCCESS,
-  USER_LOGIN_FIELD_ERROR,
-  USER_LOGIN_ERROR
-} from "./constants";
+import { SubmissionError, stopSubmit} from 'redux-form';
 
-import { postData } from '../../../utils/Api'
+
+import {
+  SUBMIT_FORM,
+  SUBMIT_FORM_SUCCESS,
+  SUBMIT_FORM_FIELD_ERROR,
+  SUBMIT_FORM_ERROR
+} from "../constants/Types";
+
+import { postData } from '../utils/Api'
 
 
 
 function* logout () {
 }
   
-function* loginFlow ({url, values, formName }) {
+function* submitForm ({url, values, formName }) {
   alert("HELLO!!")
     try {
       const response = yield call(()=> postData(url, values))
   
       yield delay(500)
-      yield put({ type: USER_LOGIN_SUCCESS, payload: response.data })
+      yield put({ type: SUBMIT_FORM_SUCCESS, payload: response.data })
   
       localStorage.setItem('token', JSON.stringify(response.data.data))
   
@@ -39,7 +41,7 @@ function* loginFlow ({url, values, formName }) {
       console.log("MALI!!",error, formName);
 
 
-      if (error.response && error.response.status === 422) {
+      if (error.response.status === 422) {
         const errorData = []
         for (let prop in error.response.data.message) {
           if (error.response.data.message[prop]) {
@@ -49,12 +51,12 @@ function* loginFlow ({url, values, formName }) {
         }
 
         yield delay(500)
-        yield put({ type: USER_LOGIN_FIELD_ERROR, payload: error.response })
+        yield put({ type: SUBMIT_FORM_FIELD_ERROR, payload: error.response })
         //Throw Error Message
         yield put(stopSubmit(formName ,errorData));
     
       } else {
-        yield put({ type: USER_LOGIN_ERROR, payload: error })
+        yield put({ type: SUBMIT_FORM_ERROR, payload: error })
       }
 
 
@@ -68,13 +70,13 @@ function* loginFlow ({url, values, formName }) {
     
 }
 
-function* userLoginSaga () {
+function* submitFormSaga () {
 
-    yield takeLatest('USER_LOGIN', loginFlow)
+    yield takeLatest('SUBMIT_FORM', submitForm)
 
 }
 
 
 
 
-export default userLoginSaga 
+export default submitFormSaga 

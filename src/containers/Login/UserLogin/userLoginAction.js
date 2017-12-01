@@ -1,9 +1,7 @@
 
 import {
   USER_LOGIN,
-  RECEIVE_API_DATA,
-  REQUEST_HELLO_WORLD,
-  RECEIVE_HELLO_WORLD
+
 } from './constants'
 
 
@@ -15,9 +13,9 @@ import {
 //   data
 // })
 
-export function userLogin (url, values, formName) {  
+export function userLoginAction (url, values, formName) {  
 
-console.log(url, values);
+console.log("ACTION!!",url, values);
   return {
     type: USER_LOGIN,
     url,
