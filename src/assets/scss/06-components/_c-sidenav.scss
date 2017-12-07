@@ -1,0 +1,24 @@
+.c-sidenav {
+  background-color: #eee;
+  &__list {
+   margin: 0;
+   list-style: none; 
+   padding: 0;
+   .c-sidenav__list {
+     
+   }
+  }
+
+  &__item {
+
+  }
+
+  &__link {
+    display: block;
+    &:hover,
+    &:focus {
+      background-color: #aaa
+    }
+
+  }
+}

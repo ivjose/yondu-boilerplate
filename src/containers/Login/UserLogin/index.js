@@ -6,25 +6,22 @@ import { userLoginAction } from "./userLoginAction";
 
 import LoginFields from "./components/LoginFields";
 import { Alert } from "reactstrap";
+import ValidationMessage from "../../../components/Forms/ValidationMessage";
 
 class UserLogin extends Component {
+  componentWillReceiveProps(newProps) {
+    const { userLoginStatus } = this.props;
 
-
-
-    componentWillReceiveProps(newProps) {
-
-        const { userLoginStatus } = this.props;
-    
-        if(newProps.userLoginStatus.status === "success") {
-            console.log("success!!!",userLoginStatus);
-            // browserHistory.push('/application-maintenance');
-        }
+    if (newProps.userLoginStatus.status === "success") {
+      console.log("success!!!", userLoginStatus);
+      // browserHistory.push('/application-maintenance');
     }
+  }
 
   handleFormSubmit = values => {
     const { userLoginAction } = this.props;
     // console.log(values, "TEST");
-    return userLoginAction("auth/login", values, "LoginFieldsForm");
+    return userLoginAction("public/user/login", values, "LoginFieldsForm");
   };
 
   render() {
@@ -34,12 +31,20 @@ class UserLogin extends Component {
     return (
       <div>
         <LoginFields handleFormSubmit={this.handleFormSubmit} />
+        {userLoginStatus.status === "error" ? (
+          <ValidationMessage
+            status="error"
+            title="Ooops something went wrong"
+            message={userLoginStatus.message}
+          />
+        ) : userLoginStatus.status === "success" ? (
+          <ValidationMessage
+            status="success"
+            title="Ooops something went wrong"
+            message={userLoginStatus.message}
+          />
+        ) : null}
 
-
-
-        {
-          userLoginStatus.status === "success" &&  userLoginStatus.message ? <Alert color="success" style={{marginTop: 20}}>{userLoginStatus.message}</Alert> : userLoginStatus.status === "error" &&  userLoginStatus.message && <Alert color="danger" style={{marginTop: 20}}>{userLoginStatus.message}</Alert> 
-        }
         <p>
           <Link to="/register">Register</Link>
         </p>

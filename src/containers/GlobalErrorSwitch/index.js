@@ -9,7 +9,7 @@ import Page404 from "../../components/Page404"
 
 
 const AsyncLogin = asyncComponent(() => import("../Login"));
-const AsyncDashboard = asyncComponent(() => import("../Dashboard/RootDasboard"));
+const AsyncDashboard = asyncComponent(() => import("../Dashboard"));
 
 class GlobalErrorSwitch extends Component {
     previousLocation = this.props.location
@@ -22,6 +22,16 @@ class GlobalErrorSwitch extends Component {
             this.previousLocation = this.props.location
         };
     }
+
+    handleToggleSidebar = () => {
+        this.setState({
+            toggle: !this.state.toggle
+        })
+    }
+
+
+
+
 
     render() {
         const { location } = this.props;
@@ -38,7 +48,7 @@ class GlobalErrorSwitch extends Component {
                     isError
                         ? <Route component={Page404} />
                         : <Switch location={isError ? this.previousLocation : location}>
-                            <AuthenticatedRoute path="/dashboard" component={AsyncDashboard} />
+                            <AuthenticatedRoute path="/dashboard" handleToggleSidebar={this.handleToggleSidebar} component={AsyncDashboard} />
                             <AuthenticatedRoute path='/app' component={AsyncDashboard} />
                             <Route path="/" component={AsyncLogin} />
 

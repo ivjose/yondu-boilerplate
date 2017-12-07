@@ -1,10 +1,10 @@
 import React from 'react';
-import { Field, reduxForm, Form, } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 import InputText from "../../../../components/Forms/InputText";
 import InputPassword from "../../../../components/Forms/InputPassword";
 import InputCheckbox from "../../../../components/Forms/InputCheckbox";
 import SubmitBtn from "../../../../components/Forms/SubmitBtn";
-
+import { Form } from 'semantic-ui-react'
 import validate from "../../../../constants/validation";
 
 function LoginFields(props) {
@@ -21,9 +21,9 @@ function LoginFields(props) {
       <Form onSubmit={handleSubmit(handleFormSubmit)}>
         <Field
           autoFocus
-          name="email"
-          label="Email"
-          type="email"
+          name="username"
+          label="Username"
+          type="text"
           component={InputText}
         />
         <Field name="password" label="Password" component={InputPassword} />
@@ -35,7 +35,7 @@ function LoginFields(props) {
         />
 
 
-        <SubmitBtn type="submit" text="Submit" block />
+        <SubmitBtn type="submit" text="Submit"  fluid  primary/>
       </Form>
     </div>
   );
@@ -45,8 +45,8 @@ LoginFields = reduxForm({
   form: "LoginFieldsForm", // a unique name for this form
   fields: [
     {
-      id: "email",
-      label: "Emails"
+      id: "username",
+      label: "Username"
     },
     {
       id: "password",

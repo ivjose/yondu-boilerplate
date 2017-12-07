@@ -1,22 +1,27 @@
 import React from "react";
 
 import { Route } from "react-router-dom";
-import { Container, Row, Col } from "reactstrap";
+
+
+import { Grid } from "semantic-ui-react";
 
 const LoginLayout = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props => (
-      <Container>
-        <Row>
-          <Col md="12" >
-          <h1 className="text-center">Login Layout</h1>
-          </Col>
-          <Col md={{ size: 4, offset: 4 }}> <Component {...props} /></Col>
-
-         
-        </Row>
-      </Container>
+   
+        <Grid style={{marginTop: 0}}>
+          <Grid.Row>
+            <Grid.Column computer={10} mobile={16}>
+              <h1 className="text-center">Login Layout</h1>
+            </Grid.Column>
+            <Grid.Column computer={5} mobile={16}>
+   
+              <Component {...props} />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+     
     )}
   />
 );

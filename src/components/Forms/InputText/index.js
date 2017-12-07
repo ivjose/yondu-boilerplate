@@ -1,11 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  FormGroup,
-  Label,
-  Input,
-  FormFeedback
-} from "reactstrap";
+
+import { Button, Input, Form, Label } from "semantic-ui-react";
 
 const propTypes = {
   label: PropTypes.string,
@@ -17,16 +13,14 @@ const propTypes = {
   placeholder: PropTypes.string,
   readOnly: PropTypes.bool,
   error: PropTypes.string,
-  touched: PropTypes.bool,
+  touched: PropTypes.bool
 };
 
 const defaultProps = {
-  label: '',
-  type: 'text',
-  placeholder: '',
-  readOnly: false,
-
-
+  label: "",
+  type: "text",
+  placeholder: "",
+  readOnly: false
 };
 
 function InputText({
@@ -40,9 +34,8 @@ function InputText({
 }) {
   console.log("INPUT TEXT!!", touched);
   return (
-    <FormGroup >
-      {label && <Label for={input.name}>{label}</Label>}
-
+    <Form.Field error={touched && error ? true : null}>
+      {label && <label htmlFor={input.name}>{label}</label>}
       <Input
         autoFocus={autoFocus && autoFocus}
         {...input}
@@ -50,17 +43,14 @@ function InputText({
         type={type}
         readOnly={readOnly ? true : false}
         placeholder={placeholder ? placeholder : `Enter ${label}`}
-        valid={touched && error ? false : null}
+        error={touched && error ? true : null}
       />
-
-      {touched &&
-        error && (
-          <FormFeedback className={touched && error && "text-danger"}>
-            {error}
-          </FormFeedback>
-        )
+      {
+        touched &&
+        error && ( <Label basic color='red' pointing>{error}</Label>)
       }
-    </FormGroup>
+  
+    </Form.Field>
   );
 }
 
