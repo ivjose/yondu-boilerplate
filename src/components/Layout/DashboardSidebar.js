@@ -1,44 +1,372 @@
 import React, { Component } from "react";
-
+import { Scrollbars } from 'react-custom-scrollbars';
 import FaEye from "react-icons/lib/fa/eye";
 
+
+import FaAngleDown from "react-icons/lib/fa/angle-down";
+
+import FaAngleUp from "react-icons/lib/fa/angle-up";
+
 export default class DashboardSidebar extends Component {
-  state = { activeIndex: 0 };
+  state = { activeIndex: null };
 
-  handleClick = (e, titleProps) => {
-    const { index } = titleProps;
-    const { activeIndex } = this.state;
-    const newIndex = activeIndex === index ? -1 : index;
+ 
 
-    this.setState({ activeIndex: newIndex });
+  handleToggleDropdown = (index, route) => {
+    console.log(index);
+    if (this.state.activeIndex === index) {
+      this.setState({ activeIndex: null });
+    } else {
+      this.setState({ activeIndex: index });
+    }
+    
   };
 
   render() {
     const { activeIndex } = this.state;
 
+    let routes = [
+      {
+        name: "path 1",
+        path: './test',
+        accessRight: true,
+      },{
+        name: "path 1",
+        path: './test',
+        accessRight: true,
+        subPath: [
+          {
+            name: "Sub1",
+            path: './test',
+            accessRight: true,
+          },
+          {
+            name: "Sub2",
+            path: './test',
+            accessRight: true,
+          }
+        ]
+      },
+      {
+        name: "sub path",
+        path: './test',
+        accessRight: true,
+        subPath: [
+          {
+            name: "Sub1",
+            path: './test',
+            accessRight: true,
+          },
+          {
+            name: "Sub2",
+            path: './test',
+            accessRight: true,
+          }
+        ]
+      }, {
+        name: "test",
+        path: './test',
+        accessRight: true,
+        subPath: [
+          {
+            name: "Sub1",
+            path: './test',
+            accessRight: true,
+          },
+          {
+            name: "Sub2",
+            path: './test',
+            accessRight: true,
+          }
+        ]
+      },{
+        name: "path 1",
+        path: './test',
+        accessRight: true,
+        subPath: [
+          {
+            name: "Sub1",
+            path: './test',
+            accessRight: true,
+          },
+          {
+            name: "Sub2",
+            path: './test',
+            accessRight: true,
+          }
+        ]
+      },
+      {
+        name: "sub path",
+        path: './test',
+        accessRight: true,
+        subPath: [
+          {
+            name: "Sub1",
+            path: './test',
+            accessRight: true,
+          },
+          {
+            name: "Sub2",
+            path: './test',
+            accessRight: true,
+          }
+        ]
+      }, {
+        name: "test",
+        path: './test',
+        accessRight: true,
+        subPath: [
+          {
+            name: "Sub1",
+            path: './test',
+            accessRight: true,
+          },
+          {
+            name: "Sub2",
+            path: './test',
+            accessRight: true,
+          }
+        ]
+      },{
+        name: "path 1",
+        path: './test',
+        accessRight: true,
+        subPath: [
+          {
+            name: "Sub1",
+            path: './test',
+            accessRight: true,
+          },
+          {
+            name: "Sub2",
+            path: './test',
+            accessRight: true,
+          }
+        ]
+      },
+      {
+        name: "sub path",
+        path: './test',
+        accessRight: true,
+        subPath: [
+          {
+            name: "Sub1",
+            path: './test',
+            accessRight: true,
+          },
+          {
+            name: "Sub2",
+            path: './test',
+            accessRight: true,
+          }
+        ]
+      }, {
+        name: "test",
+        path: './test',
+        accessRight: true,
+        subPath: [
+          {
+            name: "Sub1",
+            path: './test',
+            accessRight: true,
+          },
+          {
+            name: "Sub2",
+            path: './test',
+            accessRight: true,
+          }
+        ]
+      },{
+        name: "path 1",
+        path: './test',
+        accessRight: true,
+        subPath: [
+          {
+            name: "Sub1",
+            path: './test',
+            accessRight: true,
+          },
+          {
+            name: "Sub2",
+            path: './test',
+            accessRight: true,
+          }
+        ]
+      },
+      {
+        name: "sub path",
+        path: './test',
+        accessRight: true,
+        subPath: [
+          {
+            name: "Sub1",
+            path: './test',
+            accessRight: true,
+          },
+          {
+            name: "Sub2",
+            path: './test',
+            accessRight: true,
+          }
+        ]
+      }, {
+        name: "test",
+        path: './test',
+        accessRight: true,
+        subPath: [
+          {
+            name: "Sub1",
+            path: './test',
+            accessRight: true,
+          },
+          {
+            name: "Sub2",
+            path: './test',
+            accessRight: true,
+          }
+        ]
+      },{
+        name: "path 1",
+        path: './test',
+        accessRight: true,
+        subPath: [
+          {
+            name: "Sub1",
+            path: './test',
+            accessRight: true,
+          },
+          {
+            name: "Sub2",
+            path: './test',
+            accessRight: true,
+          }
+        ]
+      },
+      {
+        name: "sub path",
+        path: './test',
+        accessRight: true,
+        subPath: [
+          {
+            name: "Sub1",
+            path: './test',
+            accessRight: true,
+          },
+          {
+            name: "Sub2",
+            path: './test',
+            accessRight: true,
+          }
+        ]
+      }, {
+        name: "test",
+        path: './test',
+        accessRight: true,
+        subPath: [
+          {
+            name: "Sub1",
+            path: './test',
+            accessRight: true,
+          },
+          {
+            name: "Sub2",
+            path: './test',
+            accessRight: true,
+          }
+        ]
+      },{
+        name: "path 1",
+        path: './test',
+        accessRight: true,
+        subPath: [
+          {
+            name: "Sub1",
+            path: './test',
+            accessRight: true,
+          },
+          {
+            name: "Sub2",
+            path: './test',
+            accessRight: true,
+          }
+        ]
+      },
+      
+    ]
+
     return (
+      <Scrollbars
+      style={{ height: "100%" }}
+   
+      renderThumbVertical={({ style, ...props }) =>
+          <div {...props} style={{ ...style, backgroundColor: "#fd6a62" }} />
+      }
+  >
       <div className="c-sidenav">
         <ul className="c-sidenav__list">
-          <li className="c-sidenav__item">
-            <a className="c-sidenav__link" href="#">
-              test
-            </a>
-          </li>
 
-          <li className="c-sidenav__item c-sidenav__item--sub">
-            <a className="c-sidenav__link" href="#">
-              test
-            </a>
-            <ul className="c-sidenav__list">
-              <li className="c-sidenav__item">
-                <a className="c-sidenav__link" href="#">
-                  test
+        {
+          routes && routes.length > 0 && routes.map((item, index) => {
+             
+            if (item.accessRight === true) {
+              if (item.subPath) {
+                return <li className="c-sidenav__item" key={index}>
+                    <a className="c-sidenav__link" href="#" role="button"  onClick={() => this.handleToggleDropdown(index)}>
+                      <span style={{ paddingRight: 5 }}>
+                        <FaEye />
+                      </span>
+                      {item.name}
+
+                      {item.subPath && item.subPath.length && <span style={{ float: "right" }}>
+                      {this.state.activeIndex === index ? <FaAngleUp /> : <FaAngleDown />}
+                            
+                          </span>}
+                    </a>
+                    {item.subPath && item.subPath.length > 0 && <ul className="c-sidenav__list c-sidenav__list--sub" style={{display: this.state.activeIndex === index ? 'block' : 'none'}}>
+                          {item.subPath.map(
+                            (itemSub, indexSub) => {
+                              if (itemSub.accessRight === true) {
+                                return (
+                                  <li
+                                    className="c-sidenav__item"
+                                    key={indexSub}
+                                  >
+                                    <a
+                                      className="c-sidenav__link"
+                                      href={itemSub.path}
+                                    >
+                                      {itemSub.name}
+                                    </a>
+                                  </li>
+                                );
+                              } else {
+                                return null;
+                              }
+                            }
+                          )}
+                        </ul>}
+                  </li>;
+              } else {
+                return <li className="c-sidenav__item" key={index}>
+                <a className="c-sidenav__link" href={item.path}>
+                  <span style={{ paddingRight: 5 }}>
+                    <FaEye />
+                  </span>
+                  {item.name}
+
                 </a>
-              </li>
-            </ul>
-          </li>
+                </li>
+              }
+              
+            } else {
+              return null
+            }
+          })
+        }
         </ul>
       </div>
+      </Scrollbars>
     );
   }
 }
