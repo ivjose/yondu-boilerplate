@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import { Scrollbars } from 'react-custom-scrollbars';
 import FaEye from "react-icons/lib/fa/eye";
-
-
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import FaAngleDown from "react-icons/lib/fa/angle-down";
 
 import FaAngleUp from "react-icons/lib/fa/angle-up";
+
+
+
+
 
 export default class DashboardSidebar extends Component {
   state = { activeIndex: null };
@@ -210,88 +214,7 @@ export default class DashboardSidebar extends Component {
             accessRight: true,
           }
         ]
-      }, {
-        name: "test",
-        path: './test',
-        accessRight: true,
-        subPath: [
-          {
-            name: "Sub1",
-            path: './test',
-            accessRight: true,
-          },
-          {
-            name: "Sub2",
-            path: './test',
-            accessRight: true,
-          }
-        ]
-      },{
-        name: "path 1",
-        path: './test',
-        accessRight: true,
-        subPath: [
-          {
-            name: "Sub1",
-            path: './test',
-            accessRight: true,
-          },
-          {
-            name: "Sub2",
-            path: './test',
-            accessRight: true,
-          }
-        ]
-      },
-      {
-        name: "sub path",
-        path: './test',
-        accessRight: true,
-        subPath: [
-          {
-            name: "Sub1",
-            path: './test',
-            accessRight: true,
-          },
-          {
-            name: "Sub2",
-            path: './test',
-            accessRight: true,
-          }
-        ]
-      }, {
-        name: "test",
-        path: './test',
-        accessRight: true,
-        subPath: [
-          {
-            name: "Sub1",
-            path: './test',
-            accessRight: true,
-          },
-          {
-            name: "Sub2",
-            path: './test',
-            accessRight: true,
-          }
-        ]
-      },{
-        name: "path 1",
-        path: './test',
-        accessRight: true,
-        subPath: [
-          {
-            name: "Sub1",
-            path: './test',
-            accessRight: true,
-          },
-          {
-            name: "Sub2",
-            path: './test',
-            accessRight: true,
-          }
-        ]
-      },
+      }
       
     ]
 
@@ -332,12 +255,12 @@ export default class DashboardSidebar extends Component {
                                     className="c-sidenav__item"
                                     key={indexSub}
                                   >
-                                    <a
+                                    <Link
                                       className="c-sidenav__link"
-                                      href={itemSub.path}
+                                      to={itemSub.path}
                                     >
                                       {itemSub.name}
-                                    </a>
+                                    </Link>
                                   </li>
                                 );
                               } else {
@@ -349,13 +272,13 @@ export default class DashboardSidebar extends Component {
                   </li>;
               } else {
                 return <li className="c-sidenav__item" key={index}>
-                <a className="c-sidenav__link" href={item.path}>
+                <Link className="c-sidenav__link" to={item.path}>
                   <span style={{ paddingRight: 5 }}>
                     <FaEye />
                   </span>
                   {item.name}
 
-                </a>
+                </Link>
                 </li>
               }
               

@@ -3,14 +3,17 @@ import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 import { Menu, Grid } from "semantic-ui-react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import DashboardHeader from "./DashboardHeader";
 import DashboardSidebar from "./DashboardSidebar";
 
+
+import Variable from '../../../constants/Variable';
+
 const MainWrapper = styled.div`
   height: 100%;
-  padding-top: 41px;
+  padding-top: ${Variable.headerHeight}px;
   padding-bottom: 55px;
-  margin-left: 230px;
   transition: all 0.3s;
   > .ui.menu {
     margin-bottom: 0;
@@ -19,28 +22,44 @@ const MainWrapper = styled.div`
 
 const SidebarWrapper = styled.div`
   position: fixed;
+  top: ${Variable.headerHeight}px;
   z-index: 10;
   height: 100%;
-  width: 230px;
+  width: ${Variable.sidebarWidth}px;
   background-color: #333;
-  margin-left: -230px;
+  margin-left: -${Variable.sidebarWidth}px;
+  border-right: 1px solid gray;
+
 `;
 
 const ContentWrapper = styled.div`
   // margin-left: 210px;
-  padding: 0 16px;
+  padding: 10px 16px;
 `;
+
+
+const propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  handleToggleSidebar: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  Variable: PropTypes.shape({
+    sidebarWidth: PropTypes.number.isRequired,
+    headerHeight: PropTypes.number.isRequired
+  }),
+};
+
 
 function DashboardLayout({
   component: Component,
   layout: Layout,
   handleToggleSidebar,
+  isOpen,
   isLoggedIn,
   ...rest
 }) {
 
   let toggle = false 
-  console.log("TOGGLE!!",this);
+  
   
   return (
     <Route
@@ -48,13 +67,14 @@ function DashboardLayout({
       render={props =>
         isLoggedIn === true ? (
        <div>
-       <DashboardHeader toggle={toggle} />
-       <MainWrapper>
+       {console.log("TOGGLE!!", )}
+       <DashboardHeader toggle={handleToggleSidebar} isOpen={isOpen} height={Variable.headerHeight}/>
+       <MainWrapper style={{ marginLeft: isOpen ? 0 : Variable.sidebarWidth }}>
          
-         <SidebarWrapper>
+         <SidebarWrapper >
            <DashboardSidebar />
          </SidebarWrapper>
-         <ContentWrapper>
+         <ContentWrapper  >
            <Component {...props} />
          </ContentWrapper>
        </MainWrapper>

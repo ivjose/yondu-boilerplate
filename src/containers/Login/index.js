@@ -5,7 +5,7 @@ import UserLogin from "./UserLogin";
 import ForgetPassword from "./ForgetPassword";
 import Registration from "./Registration";
 import ChangePassword from "./ChangePassword";
-import LayoutLogin from "../../components/Layout/LoginLayout";
+import LayoutLogin from "./components/LoginLayout";
 
 class Login extends Component {
   componentDidMount() {

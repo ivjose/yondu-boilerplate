@@ -40,7 +40,7 @@ class GlobalErrorSwitch extends Component {
             location.state.error &&
             this.previousLocation !== location // not initial render
         )
-        console.log(this.props);
+        console.log(this.props, "TEST!!");
 
         return (
             <div style={{height: '100%', background: "#eee"}}>
@@ -48,7 +48,7 @@ class GlobalErrorSwitch extends Component {
                     isError
                         ? <Route component={Page404} />
                         : <Switch location={isError ? this.previousLocation : location}>
-                            <AuthenticatedRoute path="/dashboard" handleToggleSidebar={this.handleToggleSidebar} component={AsyncDashboard} />
+                            <AuthenticatedRoute path="/dashboard" handleToggleSidebar="test" component={AsyncDashboard} />
                             <AuthenticatedRoute path='/app' component={AsyncDashboard} />
                             <Route path="/" component={AsyncLogin} />
 

@@ -29284,6 +29284,69 @@ body.pushable > .pusher {
     .c-sidenav__link:hover, .c-sidenav__link:focus {
       background-color: #aaa; }
 
+.menu-button {
+  background: none;
+  border-radius: 0px;
+  border: none;
+  color: #333;
+  height: 50px;
+  margin: 0px;
+  min-height: 50px;
+  min-width: 50px;
+  padding: 16px 10px;
+  width: 50px;
+  align-self: center;
+  transition: all 0.3s; }
+  .menu-button:hover, .menu-button:focus, .menu-button:active {
+    outline: none; }
+
+.menu-button.active > .bar {
+  background-color: transparent;
+  transition: .2s; }
+
+.menu-button.active > .bar:before {
+  transform: rotate(45deg) translate(2px, 7px);
+  transition: .3s;
+  width: 24px;
+  left: 2px; }
+
+.menu-button.active > .bar:after {
+  transform: rotate(-45deg) translate(1px, -7px);
+  transition: .3s;
+  width: 24px;
+  left: 2px; }
+
+.bar {
+  background-color: #333;
+  width: 20px;
+  height: 3px;
+  margin: 6px auto;
+  border-radius: 3px;
+  display: block;
+  position: relative;
+  transition: all 0.3s;
+  backface-visibility: hidden; }
+
+.bar:before,
+.bar:after {
+  content: '';
+  background-color: #333;
+  border-radius: 3px;
+  width: 20px;
+  height: 3px;
+  margin: 6px auto;
+  position: absolute;
+  transition: all 0.3s;
+  backface-visibility: hidden; }
+
+.bar:before {
+  top: -12px;
+  left: 0px; }
+
+.bar:after {
+  bottom: -12px;
+  left: 0px; }
+
 /* 
 07-Trumps – utilities and helper classes with ability to override
 */
