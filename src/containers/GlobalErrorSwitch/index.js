@@ -3,18 +3,12 @@ import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 
 import asyncComponent from "../AsyncComponent";
-import AuthenticatedRoute from "../AuthenticatedRoute";
 import DashboardLayout from "./components/DashboardLayout";
 import Page404 from "../../components/Page404";
 
 const AsyncLogin = asyncComponent(() => import("../Login"));
 const AsyncDashboard = asyncComponent(() => import("../Dashboard"));
-const AsyncUserManagement = asyncComponent(() =>
-  import("../Dashboard/UserManagement")
-);
-const AsyncUserProfile = asyncComponent(() =>
-  import("../Dashboard/UserProfile")
-);
+
 class GlobalErrorSwitch extends Component {
   state = {
     isOpen: false
