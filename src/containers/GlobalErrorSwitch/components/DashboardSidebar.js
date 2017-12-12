@@ -31,27 +31,48 @@ export default class DashboardSidebar extends Component {
 
     let routes = [
       {
-        name: "Link 1",
-        path: './test',
-        accessRight: true,
+        name: "dashboard",
+        path: '/dashboard',
+        access: true,
       },{
-        name: "SubLink 1",
-        path: './test',
-        accessRight: true,
+        name: "User Management",
+        path: '/user-management',
+        access: true,
         subPath: [
           {
-            name: "Sub1",
-            path: './test',
-            accessRight: true,
+            name: "Create",
+            path: 'create',
+            access: true,
           },
           {
-            name: "Sub2",
-            path: './test',
-            accessRight: true,
+            name: "Update",
+            path: 'update',
+            access: true,
+          },
+          {
+            name: "View",
+            path: 'view',
+            access: true,
           }
         ]
+      },{
+        name: "User Profile",
+        path: '/user-profile',
+        access: true,
+        subPath: [
+          {
+            name: "User Profile update",
+            path: 'update',
+            access: true,
+          },
+          {
+            name: "User Change password",
+            path: 'change-password',
+            access: true,
+          },
+          
+        ]
       },
-
     ]
 
     return (
@@ -68,7 +89,7 @@ export default class DashboardSidebar extends Component {
         {
           routes && routes.length > 0 && routes.map((item, index) => {
              
-            if (item.accessRight === true) {
+            if (item.access === true) {
               if (item.subPath) {
                 return <li className="c-sidenav__item" key={index}>
                     <a className="c-sidenav__link" href="#" role="button"  onClick={() => this.handleToggleDropdown(index)}>
@@ -85,7 +106,7 @@ export default class DashboardSidebar extends Component {
                     {item.subPath && item.subPath.length > 0 && <ul className="c-sidenav__list c-sidenav__list--sub" style={{display: this.state.activeIndex === index ? 'block' : 'none'}}>
                           {item.subPath.map(
                             (itemSub, indexSub) => {
-                              if (itemSub.accessRight === true) {
+                              if (itemSub.access === true) {
                                 return (
                                   <li
                                     className="c-sidenav__item"
@@ -93,7 +114,7 @@ export default class DashboardSidebar extends Component {
                                   >
                                     <Link
                                       className="c-sidenav__link"
-                                      to={itemSub.path}
+                                      to={`${item.path}/${itemSub.path}`}
                                     >
                                       {itemSub.name}
                                     </Link>
