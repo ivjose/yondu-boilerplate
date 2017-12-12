@@ -5,9 +5,9 @@
 01-Settings – used with preprocessors and contain font, colors definitions, etc.
 */
 @import './01-settings/fonts';
-@import './01-settings/functions';
+// @import './01-settings/functions';
 
-@import './01-settings/variables';
+// @import './01-settings/variables';
 
 
 /* 
@@ -18,13 +18,13 @@
 /* 
 03-Generic – reset and/or normalize styles, box-sizing definition, framework "bootstrap", etc. 
 */
-@import './03-generic/bootstrap';
-
+// @import './03-generic/bootstrap';
+@import './03-generic/semantic-ui';
 /* 
 04-Elements – styling for bare HTML elements (like H1, A, etc.). 
 */
-@import './04-elements/html';
-@import './04-elements/body';
+// @import './04-elements/html';
+// @import './04-elements/body';
 
 /* 
 05-Objects – class-based selectors which define undecorated design patterns,
@@ -36,7 +36,8 @@
 06-Components – specific UI components
 */
 
-// @import './06-components/c-main-nav.scss';
+@import './06-components/c-sidenav';
+@import './06-components/menu-button';
 
 /* 
 07-Trumps – utilities and helper classes with ability to override

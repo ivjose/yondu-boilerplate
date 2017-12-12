@@ -1,11 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  FormGroup,
-  Label,
-  Input,
-  FormFeedback
-} from "reactstrap";
+// import { FormGroup, Label, Input, FormFeedback } from "reactstrap";
+
+import { Form, Checkbox, Label } from "semantic-ui-react";
 
 const propTypes = {
   label: PropTypes.string,
@@ -13,18 +10,15 @@ const propTypes = {
     name: PropTypes.string.isRequired,
     value: PropTypes.bool
   }),
-  meta: PropTypes.shape({
-    touched: PropTypes.bool,
-    error: PropTypes.string
-  }),
-
+  error: PropTypes.string,
+  touched: PropTypes.bool,
   placeholder: PropTypes.string,
   readOnly: PropTypes.bool
 };
 
 const defaultProps = {
-  label: '',
-  placeholder: '',
+  label: "",
+  placeholder: "",
   readOnly: false,
   input: {
     value: false
@@ -40,32 +34,34 @@ function InputCheckbox({
   placeholder,
   meta: { touched, error }
 }) {
-  console.log(input,"Cjeck");
   return (
-    <FormGroup check>
-      {label && <Label for={input.name} className="d-block">{label}</Label>}
-      <Label check>
-     
-        <Input
-          {...input}
-          id={input.name}
-          checked={input.value}
+    <Form.Field error={touched && error ? true : null}>
+      {label && (
+        <Label for={input.name} className="d-block">
+          {label}
+        </Label>
+      )}
+      <Checkbox
+        label={text && text}
+        {...input}
+        id={input.name}
+ 
+        value={input.value ? 'on' : 'off'}
 
-          type="checkbox"
-          readOnly={readOnly ? true : false}
-          placeholder={placeholder ? placeholder : `Enter ${label}`}
-          valid={touched && error ? false : null}
-        />
-        {text}
-      </Label>
+        checked={input.value && input.value}
+    
+        readOnly={readOnly ? true : false}
+        placeholder={placeholder ? placeholder : `Enter ${label}`}
+        error={touched && error ? true : null}
+      />
+
       {touched &&
         error && (
-          <FormFeedback className={touched && error && "text-danger"}>
+          <Label basic color="red" pointing>
             {error}
-          </FormFeedback>
-        )
-      }
-    </FormGroup>
+          </Label>
+        )}
+    </Form.Field>
   );
 }
 

@@ -9,29 +9,24 @@ import Api from "../../../utils/Api";
 class MainDashboard extends Component {
     componentDidMount() {
         // Api.Get()
-        this.props.requestApiData('api/')
+        // this.props.requestApiData('api/')
     }
+
+
 
 
     render() {
 
 
-        const person = (x, i) => (
-            <div key={x.id.value}>
-            <h1>{x.gender}</h1>
-            <h1>{x.name.first}</h1>
-            <h1>{x.name.last}</h1>
-            <img src={x.picture.medium} alt=""/>
-            </div>
-        )
+
 
         const {results = []} = this.props.getData
 
         return (
             <div>
-                MainDashboard Test
+             
                    <h1>
-                    {results.map(person)}
+                   MainDashboard Test  MainDashboard Test MainDashboard Test MainDashboard Test MainDashboard Test  MainDashboard Test MainDashboard Test MainDashboard TestMainDashboard Test  MainDashboard Test MainDashboard Test MainDashboard TestMainDashboard Test  MainDashboard Test MainDashboard Test MainDashboard Test
                 </h1>
             </div>
         );

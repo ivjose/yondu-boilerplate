@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { FormGroup, Label, Input, FormText, FormFeedback } from "reactstrap";
 
+import { Input, Form, Label, Icon } from "semantic-ui-react";
 import styled from "styled-components";
 // import colors from "../../../constants/colors";
-
-
 
 import FaEyeSlash from "react-icons/lib/fa/eye-slash";
 import FaEye from "react-icons/lib/fa/eye";
@@ -29,24 +27,21 @@ const IconInput = styled.button`
   }
 `;
 
-
 const propTypes = {
   label: PropTypes.string,
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
     value: PropTypes.string
   }),
-  meta: PropTypes.shape({
-    touched: PropTypes.bool,
-    error: PropTypes.string
-  }), 
+  error: PropTypes.string,
+  touched: PropTypes.bool,
   placeholder: PropTypes.string,
   readOnly: PropTypes.bool
 };
 
 const defaultProps = {
-  label: '', 
-  placeholder: '',
+  label: "",
+  placeholder: "",
   readOnly: false
 };
 
@@ -56,7 +51,6 @@ class InputPassword extends Component {
   };
 
   handleToggle(e) {
-
     this.setState({
       show: !this.state.show
     });
@@ -74,34 +68,31 @@ class InputPassword extends Component {
     // console.log(input.value, "!!!!");
 
     return (
-      <FormGroup>
-        <Label>{label} </Label>
+      <Form.Field error={touched && error ? true : null}>
+        {label && <label htmlFor={input.name}>{label}</label>}
 
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <Input
-      
-            {...input}
-            autoFocus={autoFocus && autoFocus}
-            type={!this.state.show ? "password" : "text"}
-            readOnly={readOnly ? true : false}
-            placeholder={placeholder ? placeholder : `Enter ${label}`}
-            valid={touched && error ? false : null}
-          />
-          <IconInput type="button" onClick={() => this.handleToggle()}>
-            {this.state.show ? <FaEyeSlash /> : <FaEye />}
-          </IconInput>
-
-          {touched &&
-            error && (
-              <FormFeedback className={touched && error && "text-danger"}>
-                {error}
-              </FormFeedback>
-            )
+        <Input
+          {...input}
+          autoFocus={autoFocus && autoFocus}
+          id={input.name}
+          type={!this.state.show ? "password" : "text"}
+          readOnly={readOnly ? true : false}
+          placeholder={placeholder ? placeholder : `Enter ${label}`}
+          error={touched && error ? true : null}
+          icon={
+            <IconInput type="button" onClick={() => this.handleToggle()}>
+              {this.state.show ? <FaEyeSlash /> : <FaEye />}
+            </IconInput>
           }
-        </div>
+        />
 
-        
-      </FormGroup>
+        {touched &&
+          error && (
+            <Label basic color="red" pointing>
+              {error}
+            </Label>
+          )}
+      </Form.Field>
     );
   }
 }

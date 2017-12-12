@@ -1,28 +1,68 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { Switch, Route, Redirect, Link } from "react-router-dom";
+import asyncComponent from "../AsyncComponent";
 
-import { Switch, Route, Redirect, Link } from 'react-router-dom';
+import ModuleRoutes from "./ModuleRoutes";
+
+const AsyncMainDashboard = asyncComponent(() => import("./MainDashboard"));
+const AsyncUserProfile = asyncComponent(() => import("./UserProfile"));
 
 class Dashboard extends Component {
-    render() {
-        return (
-            <div>
-            <h2>Dashboard</h2>
-            <p><Link to="/admin">Root</Link></p>
-            <p><Link to="/admin/user">User</Link></p>
-            <p><Link to="/admin/user/asdasd">UserTest</Link></p>
-            <p><Link to="/">Frontend</Link></p>
-            <p><Link to="/admin/the-route-is-swiggity-swoute">Swiggity swooty</Link></p>
-            <Switch>
-                <Route exact path='/Dashboard' component={Home} />
-                <Route exact path='/UserProfile' component={About} />
-                <Redirect to={{
-                    state: { error: true }
-                }} />
-            </Switch>
-            <footer>Bottom</footer>
-        </div>
-        );
-    }
+  state = {
+    isOpen: false
+  }
+
+
+  handleToggleSidebar = () => {
+    
+
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+  }
+
+  render() {
+
+    console.log("HELLO SIDEBAR!", this.state.isOpen);
+    return (
+      <Switch>
+      {ModuleRoutes.map(
+        (route, index) => {
+          if (route.access === true && route.subRoute) {
+              return route.subRoute.map(
+                (subRoute, subIndex) => {
+        
+                  if (subRoute.access === true) {
+                    console.log("SUBROUTE", subRoute, subIndex);
+                    return (
+                      <Route key={subIndex} {...subRoute} path={`${route.path}/${subRoute.path}`} />
+                    );
+                  } else {
+                    return null;
+                  }
+                }
+              ) 
+            
+        
+          } else if (route.access === true) {
+            return (
+              <Route key={index} {...route}/>
+            );
+
+          } else {
+            return null;
+          }
+        }
+      )}
+
+        <Redirect
+          to={{
+            state: { error: true }
+          }}
+        />
+      </Switch>
+    );
+  }
 }
 
 export default Dashboard;

@@ -1,0 +1,55 @@
+.c-sidenav {
+  background-color: #eee;
+  ul li {
+   
+  }
+  > ul > li > a {
+      // border-bottom: 1px solid black;
+   
+  }
+  &__list {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    .c-sidenav__item {
+      border-bottom: 1px solid #e7e7e7;
+    }
+    &--sub {
+      .c-sidenav__item {
+        border-bottom: none;
+        .c-sidenav__link {
+          padding: 10px 15px 10px 30px;
+        }
+      }
+    }
+    
+    .c-sidenav__list {
+    }
+  }
+
+  &__item {
+    
+    
+    &--sub {
+      .c-sidenav__list {
+        .c-sidenav__link {
+          
+        }
+      }
+
+      
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    padding: 10px 10px;
+    
+    &:hover,
+    &:focus {
+      background-color: #aaa;
+    }
+    
+  }
+}
